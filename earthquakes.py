@@ -23,10 +23,11 @@ def get_data():
 
     text = response.text
 
-    with open('earthquakes.json', 'w') as f:
-        f.write(text)
+    #with open('earthquakes.json', 'w') as f:
+       # f.write(text)
 
-get_data()
+    data = json.loads(text)
+    return data
 
     # We need to interpret the text to get values that we can work with.
     # What format is the text in? How can we load the values?

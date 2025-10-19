@@ -29,13 +29,13 @@ def get_data():
     data = json.loads(text)
     return data
 
-    # We need to interpret the text to get values that we can work with.
-    # What format is the text in? How can we load the values?
-    ### return ...
+data = get_data()
 
-###def count_earthquakes(data):
-    ###"""Get the total number of earthquakes in the response."""
-   ### return ...
+def count_earthquakes(data):
+    return data["metadata"]["count"]
+
+num_eq = count_earthquakes(data)
+print(f'There are {num_eq} earthquakes.')
 
 
 ###def get_magnitude(earthquake):

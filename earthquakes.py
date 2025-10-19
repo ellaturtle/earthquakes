@@ -1,14 +1,9 @@
-# The Python standard library includes some functionality for communicating
-# over the Internet.
-# However, we will use a more powerful and simpler library called requests.
-# This is external library that you may need to install first.
 import requests
 import json
 
+# see week 4 prep original to see # comments 
 
 def get_data():
-    # With requests, we can ask the web service for the data.
-    # Can you understand the parameters we are passing here?
     response = requests.get(
         "http://earthquake.usgs.gov/fdsnws/event/1/query.geojson",
         params={
@@ -19,15 +14,12 @@ def get_data():
             "minlongitude": "-9.756",
             "minmagnitude": "1",
             "endtime": "2018-10-11",
-            "orderby": "time-asc"}
+            "orderby": "time-asc"
+        }
     )
 
-    # The response we get back is an object with several fields.
-    # The actual contents we care about are in its text field:
     text = response.text
-    # To understand the structure of this text, you may want to save it
-    # to a file and open it in VS Code or a browser.
-    # See the README file for more information.
+
     with open('earthquakes.json', 'w') as f:
         f.write(text)
 

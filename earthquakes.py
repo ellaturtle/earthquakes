@@ -1,5 +1,8 @@
 import requests
 import json
+import os
+print("Current working directory:", os.getcwd())
+
 
 # see week 4 prep original to see # comments 
 
@@ -23,6 +26,8 @@ def get_data():
     with open('earthquakes.json', 'w') as f:
         f.write(text)
 
+get_data()
+
     # We need to interpret the text to get values that we can work with.
     # What format is the text in? How can we load the values?
     ### return ...
@@ -34,7 +39,7 @@ def get_data():
 
 ###def get_magnitude(earthquake):
     ###"""Retrive the magnitude of an earthquake item."""
-    return ...
+    ###return ...
 
 
 ###def get_location(earthquake):

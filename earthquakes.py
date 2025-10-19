@@ -40,14 +40,11 @@ print(f'There are {num_eq} earthquakes.')
 
 def get_magnitude(earthquake):
     return earthquake["properties"]["mag"]
-    ###"""Retrive the magnitude of an earthquake item."""
-    ###return ...
 
 
-###def get_location(earthquake):
-   ### """Retrieve the latitude and longitude of an earthquake item."""
-    # There are three coordinates, but we don't care about the third (altitude)
-    ###return ...
+def get_location(earthquake):
+    lon, lat, _ = earthquake["geometry"]["coordinates"]
+    return (lat, lon)
 
 
 ###def get_maximum(data):

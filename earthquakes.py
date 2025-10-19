@@ -38,7 +38,8 @@ num_eq = count_earthquakes(data)
 print(f'There are {num_eq} earthquakes.')
 
 
-###def get_magnitude(earthquake):
+def get_magnitude(earthquake):
+    return earthquake["properties"]["mag"]
     ###"""Retrive the magnitude of an earthquake item."""
     ###return ...
 

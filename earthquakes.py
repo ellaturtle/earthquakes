@@ -28,7 +28,6 @@ def get_data():
 
     data = json.loads(text)
     return data
-
 data = get_data()
 
 def count_earthquakes(data):
@@ -47,13 +46,19 @@ def get_location(earthquake):
     return (lat, lon)
 
 
-###def get_maximum(data):
-  ###  """Get the magnitude and location of the strongest earthquake in the data."""
-    ###...
+def get_maximum(data):
+    max_magnitude = 0
+    max_earthquake = None
 
+    for earthquake in data["features"]:
+        mag = get_magnitude(earthquake)
+        if mag > max_magnitude:
+            max_magnitude = mag
+            max_earthquake = earthquake
 
-# With all the above functions defined, we can now call them and get the result
-#data = get_data()
-#print(f"Loaded {count_earthquakes(data)}")
-#max_magnitude, max_location = get_maximum(data)
-#print(f"The strongest earthquake was at {max_location} with magnitude {max_magnitude}")
+    max_location = get_location(max_earthquake)
+    return max_magnitude, max_location
+
+print(f"Loaded {count_earthquakes(data)}")
+max_magnitude, max_location = get_maximum(data)
+print(f"The strongest earthquake was at {max_location} with magnitude {max_magnitude}")

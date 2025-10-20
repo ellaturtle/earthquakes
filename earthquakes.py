@@ -50,4 +50,4 @@ def get_year(earthquake):
     date = earthquake["properties"]["time"]
     # convert from ISO format to year
     year = datetime.utcfromtimestamp(date / 1000).year
-    return year
+    return str(year)

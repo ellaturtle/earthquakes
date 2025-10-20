@@ -47,8 +47,6 @@ def get_location(earthquake):
 
 
 def get_maximum(data):
-    # finding the earthquake with the largest magnitude and its location
-    #but what if two earthquakes have the same magnitude and we want both locations?
     earthquakes = data["features"]
     max_earthquake = max(earthquakes, key=get_magnitude)  
     max_magnitude = get_magnitude(max_earthquake)

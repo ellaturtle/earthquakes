@@ -47,17 +47,14 @@ def get_location(earthquake):
 
 
 def get_maximum(data):
-    max_magnitude = 0
-    max_earthquake = None
-
-    for earthquake in data["features"]:
-        mag = get_magnitude(earthquake)
-        if mag > max_magnitude:
-            max_magnitude = mag
-            max_earthquake = earthquake
-
+    # finding the earthquake with the largest magnitude and its location
+    #but what if two earthquakes have the same magnitude and we want both locations?
+    earthquakes = data["features"]
+    max_earthquake = max(earthquakes, key=get_magnitude)  
+    max_magnitude = get_magnitude(max_earthquake)
     max_location = get_location(max_earthquake)
     return max_magnitude, max_location
+
 
 print(f"Loaded {count_earthquakes(data)}")
 max_magnitude, max_location = get_maximum(data)

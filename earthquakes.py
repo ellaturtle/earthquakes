@@ -1,10 +1,7 @@
 import requests
 import json
 import os
-print("Current working directory:", os.getcwd())
-
-
-# see week 4 prep original to see # comments 
+from datetime import datetime
 
 def get_data():
     response = requests.get(
@@ -28,13 +25,9 @@ def get_data():
 
     data = json.loads(text)
     return data
-data = get_data()
 
 def count_earthquakes(data):
     return data["metadata"]["count"]
-
-num_eq = count_earthquakes(data)
-print(f'There are {num_eq} earthquakes.')
 
 
 def get_magnitude(earthquake):
@@ -53,7 +46,8 @@ def get_maximum(data):
     max_location = get_location(max_earthquake)
     return max_magnitude, max_location
 
-
-print(f"Loaded {count_earthquakes(data)}")
-max_magnitude, max_location = get_maximum(data)
-print(f"The strongest earthquake was at {max_location} with magnitude {max_magnitude}")
+def get_year(earthquake):
+    date = earthquake["properties"]["time"]
+    # convert from ISO format to year
+    year = datetime.utcfromtimestamp(date / 1000).year
+    return str(year)
